@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRINCIPAL EXAM 2026 — राधाकृष्णन आयोग MCQ टेस्ट</title>
+    <meta name="description" content="प्रधानाचार्य परीक्षा 2026 के लिए राधाकृष्णन आयोग (1948–49) विश्वविद्यालय शिक्षा आयोग पर 50 प्रश्नों का अभ्यास टेस्ट।">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ═══════════════════ WELCOME SCREEN ═══════════════════ -->
+    <section id="welcome-screen" class="screen active">
+        <div class="welcome-container">
+            <div class="brand-badge">📚 अभ्यास परीक्षा</div>
+            <h1 class="main-heading">PRINCIPAL EXAM 2026</h1>
+            <div class="topic-card">
+                <div class="topic-icon">🎓</div>
+                <h2 class="topic-title">राधाकृष्णन आयोग (1948–49)</h2>
+                <p class="topic-subtitle">विश्वविद्यालय शिक्षा आयोग</p>
+            </div>
+            <div class="exam-info">
+                <div class="info-chip"><span class="info-icon">📝</span> 50 प्रश्न</div>
+                <div class="info-chip"><span class="info-icon">🎯</span> बहुविकल्पीय</div>
+                <div class="info-chip"><span class="info-icon">⏱️</span> समय असीमित</div>
+            </div>
+            <div class="name-input-group">
+                <label for="user-name" class="name-label">अपना नाम दर्ज करें</label>
+                <input type="text" id="user-name" class="name-input" placeholder="यहाँ अपना नाम लिखें..." autocomplete="name" aria-required="true">
+                <p id="name-error" class="error-msg" role="alert" aria-live="polite"></p>
+            </div>
+            <button id="start-btn" class="btn btn-primary btn-large" aria-label="टेस्ट शुरू करें">
+                🚀 टेस्ट शुरू करें
+            </button>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ QUIZ SCREEN ═══════════════════ -->
+    <section id="quiz-screen" class="screen">
+        <header class="quiz-header">
+            <div class="header-top">
+                <h1 class="header-title">PRINCIPAL EXAM 2026</h1>
+                <span id="user-display" class="user-badge"></span>
+            </div>
+            <div class="progress-section">
+                <div class="progress-text" id="progress-text">प्रश्न 1 / 50</div>
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="progress-bar" style="width: 2%"></div>
+                </div>
+            </div>
+        </header>
+
+        <main class="quiz-body">
+            <div class="question-card" id="question-card">
+                <div class="question-number" id="question-number">प्रश्न 1</div>
+                <p class="question-text" id="question-text"></p>
+                <div class="options-list" id="options-list" role="radiogroup" aria-label="उत्तर विकल्प">
+                    <!-- Options rendered by JS -->
+                </div>
+            </div>
+        </main>
+
+        <footer class="quiz-footer">
+            <div class="nav-buttons">
+                <button id="prev-btn" class="btn btn-secondary" disabled aria-label="पिछला प्रश्न">
+                    ← पिछला प्रश्न
+                </button>
+                <button id="next-btn" class="btn btn-secondary" aria-label="अगला प्रश्न">
+                    अगला प्रश्न →
+                </button>
+            </div>
+            <div class="question-map-toggle">
+                <button id="toggle-map-btn" class="btn btn-outline" aria-label="प्रश्न सूची देखें">
+                    📋 प्रश्न सूची
+                </button>
+            </div>
+            <div id="question-map" class="question-map hidden" role="navigation" aria-label="प्रश्न नेविगेशन">
+                <!-- Question map rendered by JS -->
+            </div>
+            <button id="submit-btn" class="btn btn-submit btn-large" aria-label="टेस्ट जमा करें">
+                ✅ टेस्ट जमा करें
+            </button>
+        </footer>
+
+        <!-- Confirmation Modal -->
+        <div id="confirm-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="modal-box">
+                <div class="modal-icon">⚠️</div>
+                <h3 id="modal-title" class="modal-title">क्या आप सुनिश्चित हैं?</h3>
+                <p id="modal-message" class="modal-message"></p>
+                <div class="modal-buttons">
+                    <button id="modal-cancel" class="btn btn-secondary">वापस जाएँ</button>
+                    <button id="modal-confirm" class="btn btn-primary">हाँ, जमा करें</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ RESULT SCREEN ═══════════════════ -->
+    <section id="result-screen" class="screen">
+        <div class="result-container">
+            <div class="result-header">
+                <h1 class="main-heading">PRINCIPAL EXAM 2026</h1>
+                <h2 class="result-subtitle">📊 परीक्षा परिणाम</h2>
+            </div>
+
+            <div class="result-user-card" id="result-user-card">
+                <p class="result-user-name" id="result-user-name"></p>
+            </div>
+
+            <div class="score-circle-wrapper">
+                <div class="score-circle" id="score-circle">
+                    <svg viewBox="0 0 120 120" class="score-ring">
+                        <circle cx="60" cy="60" r="54" class="ring-bg"/>
+                        <circle cx="60" cy="60" r="54" class="ring-fill" id="ring-fill"/>
+                    </svg>
+                    <div class="score-inner">
+                        <span class="score-number" id="score-number">0</span>
+                        <span class="score-total">/ 50</span>
+                    </div>
+                </div>
+                <p class="score-percentage" id="score-percentage">0%</p>
+                <p class="score-remark" id="score-remark"></p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card stat-correct">
+                    <span class="stat-icon">✅</span>
+                    <span class="stat-value" id="stat-correct">0</span>
+                    <span class="stat-label">सही उत्तर</span>
+                </div>
+                <div class="stat-card stat-wrong">
+                    <span class="stat-icon">❌</span>
+                    <span class="stat-value" id="stat-wrong">0</span>
+                    <span class="stat-label">गलत उत्तर</span>
+                </div>
+                <div class="stat-card stat-unanswered">
+                    <span class="stat-icon">⬜</span>
+                    <span class="stat-value" id="stat-unanswered">0</span>
+                    <span class="stat-label">अनुत्तरित</span>
+                </div>
+            </div>
+
+            <h3 class="review-heading">📖 सभी प्रश्नों की समीक्षा</h3>
+            <div id="review-list" class="review-list">
+                <!-- Rendered by JS -->
+            </div>
+
+            <button id="retry-btn" class="btn btn-primary btn-large retry-btn" aria-label="फिर से टेस्ट दें">
+                🔄 फिर से टेस्ट दें
+            </button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
